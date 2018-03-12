@@ -7,39 +7,6 @@
 
 using namespace std;
 
-/*
-int	main()
-{
-  RenderWindow window(VideoMode(800, 600, 32), "Yu-Gi-Oh");
-  Texture texture;
-  Sprite sprite;
-  Image image;
-
-  if (!texture.loadFromFile("image/iron.bmp", sf::IntRect(10, 10, 32, 32)))
-    {
-      cout << "Erreur durant le chargement de l'image" << endl;
-      return EXIT_FAILURE;
-    }
-  else
-    {
-      sprite.setTexture(texture);
-    }
-  while (window.isOpen())
-    {
-      Event event;
-
-      while (window.waitEvent(event))
-	{
-	  if (event.type == Event::Closed)
-	    window.close();
-	}
-      window.clear();
-      window.draw(sprite);
-      window.display();
-    }
-  return EXIT_SUCCESS;
-}
-*/
 int	main()
 {
   sf::RenderWindow window(sf::VideoMode(800, 600), "Yu Gi Oh");
