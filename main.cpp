@@ -4,7 +4,7 @@
 
 int main()
 {
-  sf::RenderWindow window(sf::VideoMode(600, 600), "Yu Gi Oh");
+  sf::RenderWindow window(sf::VideoMode(800, 600), "Yu Gi Oh");
   sf::Texture texture;
   texture.loadFromFile("image/screen_Menu.jpg");
 
