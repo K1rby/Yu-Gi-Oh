@@ -5,7 +5,7 @@
 ## Login   <quentin@epitech.net>
 ##
 ## Started on  Mon Dec 18 16:21:33 2017 fontenay
-## Last update Mon Mar 12 16:01:31 2018 fontenay
+## Last update Sun Apr  8 15:20:11 2018 fontenay
 ##
 
 CC      =       g++
@@ -14,7 +14,7 @@ RM      =       rm -f
 
 NAME    =       Yu-Gi-Oh
 
-LIB	=	-lsfml-graphics -lsfml-window -lsfml-system
+LIB	=	-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 SRC     =       main.cpp	\
 		menu.cpp

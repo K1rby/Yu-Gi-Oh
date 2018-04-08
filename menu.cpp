@@ -1,12 +1,10 @@
-#include "menu.h"
+#include "menu.hpp"
+#include <iostream>
 
 
 Menu::Menu(float width, float height)
 {
-  if (!font.loadFromFile("police/airstrike.ttf"))
-    {
-      // handle error
-    }
+  font.loadFromFile("police/airstrike.ttf");
 
   menu[0].setFont(font);
   menu[0].setColor(sf::Color::Red);
@@ -24,11 +22,6 @@ Menu::Menu(float width, float height)
   menu[2].setPosition(sf::Vector2f(width / 5, height / (MAX_NUMBER_OF_ITEMS + 1) * 2.85));
 
   selectedItemIndex = 0;
-}
-
-
-Menu::~Menu()
-{
 }
 
 void Menu::draw(sf::RenderWindow &window)
@@ -57,4 +50,17 @@ void Menu::MoveDown()
       selectedItemIndex++;
       menu[selectedItemIndex].setColor(sf::Color::Red);
     }
+}
+
+void	Menu::Draw_options(sf::RenderWindow &window)
+{
+  window.draw(volume);
+}
+
+void	Menu::Options()
+{
+  font.loadFromFile("police/airstrike.ttf");
+  volume.setFont(font);
+  volume.setColor(sf::Color::Red);
+  volume.setString("VOLUME");
 }
