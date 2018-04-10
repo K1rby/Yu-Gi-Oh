@@ -10,16 +10,25 @@ int main()
   sf::Texture texture;
   sf::Text volume;
   sf::Font font;
-  sf::CircleShape shape(100.f);
   sf::Music music;
+  sf::Music music1;
 
-
+  //MUSIC//
   music.openFromFile("music/yu.ogg");
-  music.setVolume(50);
-
+  music1.openFromFile("music/yu1.ogg");
+  music.setVolume(5);
   music.play();
+  //  sound.SetLoop(true);
 
-  shape.setFillColor(sf::Color::Green);
+  // TEXTE OPTION //
+
+  font.loadFromFile("police/airstrike.ttf");
+  volume.setFont(font);
+  volume.setString("Volume:");
+  volume.setColor(sf::Color::Red);
+  volume.setPosition(50, 300);
+
+
   texture.loadFromFile("image/screen_Menu.jpg");
 
   sf::Sprite spr(texture);
@@ -47,8 +56,9 @@ int main()
 		  switch (menu.GetPressedItem())
 		    {
 		    case 0:
+		      music1.setVolume(50);
+		      music1.play();
 		      a = 1;
-		      std::cout << "Play button has been pressed" << std::endl;
 		      break;
 		    case 1:
 		      a = 2;
@@ -72,25 +82,19 @@ int main()
 	{
 	  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 	    {
-	      a = 3;
+	      a = 10;
 	    }
 	  else
 	    {
-	           sf::CircleShape shape(100.f);
-	      shape.setFillColor(sf::Color::Green);
-	      //font.loadFromFile("police/airstrike.ttf");
-	      // volume.setFont(font);
-	      //volume.setColor(sf::Color::Red);
-	      //volume.setString("VOLUME");
+	      sf::Texture background;
 
-	      //while (window.isOpen())
-	      //{
+	      background.loadFromFile("image/option.png");
+
+	      sf::Sprite spr2(background);
+
 		  sf::Event event;
 		  while (window.pollEvent(event))
 		    {
-		      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-			window.close();
-
 		      if (event.type == sf::Event::EventType::KeyPressed){
 
 			if (event.key.code == sf::Keyboard::Key::Down)
@@ -103,31 +107,49 @@ int main()
 
 		    }
 		  window.clear();
-		  window.draw(spr);
-		  window.draw(shape);
+		  window.draw(spr2);
+		  window.draw(volume);
 		  window.display();
-		  //}
-	      //window.clear();
-	      //window.draw(shape);
-	      //	      window.draw(spr);
-	      /*
-	      font.loadFromFile("police/airstrike.ttf");
-	      volume.setFont(font);
-	      volume.setColor(sf::Color::Red);
-	      volume.setString("VOLUME");
-	      window.draw(volume);
-
-	      //menu.Draw_options(window);
-	      //menu.draw(window);
-	      window.display();
-	      */
 	    }
 	}
+      while (a == 1)
+	{
+	  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+	    {
+	      music1.stop();
+	      music.play();
+	      a = 10;
+	    }
+	  else
+	    {
+	      music.stop();
+
+	      sf::Texture plateau;
+
+	      plateau.loadFromFile("image/yugi.png");
+	      sf::Sprite spr1(plateau);
+
+		  sf::Event event;
+		  while (window.pollEvent(event))
+		    {
+		      if (event.type == sf::Event::Closed)
+			window.close();
+		    }
+
+		  //music1.setVolume(50);
+		  // music1.play();
+		  window.clear();
+		  // window.draw(spr);
+		  window.draw(spr1);
+		  window.display();
+	    }
+	}
+
       if (a == 4)
 	{
 	  window.close();
 	}
-      else
+      else if (a == 10 || a > 7)
 	{
 	  window.clear();
 	  window.draw(spr);
