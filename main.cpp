@@ -18,9 +18,10 @@ int main()
   sf::Music music1;
   sf::Texture curseur;
 
-
+  window.setKeyRepeatEnabled(false);
   b = 1;
   c = 2;
+  bool leftPressed = false;
   curseur.loadFromFile("image/curseur.png");
 
   sf::Sprite curseur1(curseur);
@@ -142,8 +143,11 @@ int main()
 	      sf::Texture vie_joueur2;
 	      sf::Texture attaque;
 
-
 	      sf::Texture display1;
+	      sf::Texture display2;
+	      sf::Texture display3;
+	      sf::Texture display4;
+	      sf::Texture display5;
 
 	      sf::Texture carte1;
 	      sf::Texture carte2;
@@ -160,6 +164,10 @@ int main()
 	      //	      sf::Texture curseur;
 
 	      display1.loadFromFile("image/carte_dragon_bleu.png");
+	      display2.loadFromFile("image/carte2.jpg");
+	      display3.loadFromFile("image/carte3.jpg");
+	      display4.loadFromFile("image/carte4.jpg");
+	      display5.loadFromFile("image/carte5.jpg");
 
 	      carte1.loadFromFile("image/yugi_carte2.png");
 	      carte2.loadFromFile("image/yugi_carte2.png");
@@ -191,7 +199,12 @@ int main()
 
 	      sf::Sprite spr1(plateau);
 
-	      sf::Sprite display_carte(display1);
+	      sf::Sprite display_carte1(display1);
+	      sf::Sprite display_carte2(display2);
+	      sf::Sprite display_carte3(display3);
+	      sf::Sprite display_carte4(display4);
+	      sf::Sprite display_carte5(display5);
+
 
 	      sf::Sprite carte1_yugi(carte1);
 	      sf::Sprite carte2_yugi(carte2);
@@ -245,7 +258,12 @@ int main()
 	      carte9_yugi.setPosition(sf::Vector2f(580, 50));
 	      carte10_yugi.setPosition(sf::Vector2f(640, 50));
 
-	      display_carte.setPosition(sf::Vector2f(500, 150));
+	      display_carte1.setPosition(sf::Vector2f(500, 150));
+	      display_carte2.setPosition(sf::Vector2f(500, 150));
+	      display_carte3.setPosition(sf::Vector2f(500, 150));
+	      display_carte4.setPosition(sf::Vector2f(500, 150));
+	      display_carte5.setPosition(sf::Vector2f(500, 150));
+
 
 	      spr4.setPosition(sf::Vector2f(30,150));
 
@@ -253,30 +271,36 @@ int main()
 		  while (window.pollEvent(event))
 		    {
 		      if (event.type == sf::Event::Closed)
-			window.close();
-		    }
-
-		  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && (b >= 1))
-		    {
-		      if (b == 1)
 			{
-			  curseur1.setPosition(sf::Vector2f(633, 495));
-			  //			  window.draw(display_carte);
-			  //curseur1.move(-15, 0);
+			  window.close();
 			}
-		      //		      window.draw(display_carte);
+		      else if (event.type == sf::Event::KeyPressed)
+		        {
 
-		      //      b++;
+			  if (event.key.code == sf::Keyboard::Left)
+			{
+			  curseur1.move(-62, 0);
+			  b++;
+			}
+			  else if (event.key.code == sf::Keyboard::Right)
+			    {
+			      curseur1.move(62, 0);
+			      b--;
+			    }
+			}
 		    }
-		  else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+
+		  /*
+		  if (b == 2)
 		    {
-		      curseur1.move(15, 0);
+		      window.draw(display_carte1);
+		      window.display();
 		    }
-
-
+		  */
 		  //music1.setVolume(50);
 		  // music1.play();
 		  window.clear();
+
 		  // window.draw(spr);
 		  window.draw(spr1);
 
@@ -293,15 +317,37 @@ int main()
 		  window.draw(carte9_yugi);
 		  window.draw(carte10_yugi);
 
-		  window.draw(display_carte);
-
 		  window.draw(vie1);
 		  window.draw(vie2);
 		  window.draw(hp1);
 		  window.draw(hp2);
 
 		  window.draw(spr4);
-
+		  if (b == 2)
+		    {
+		      window.draw(display_carte1);
+		      window.display();
+		    }
+		  else if (b == 3)
+		    {
+		      window.draw(display_carte2);
+		      window.display();
+		    }
+		  else if (b == 4)
+		    {
+		      window.draw(display_carte3);
+		      window.display();
+		    }
+		  else if (b == 5)
+		    {
+		      window.draw(display_carte4);
+		      window.display();
+		    }
+		  else if (b == 6)
+		    {
+		      window.draw(display_carte5);
+		      window.display();
+		    }
 		  window.display();
 	    }
 	}
